@@ -7,15 +7,41 @@
 //
 
 import UIKit
+import CoreLocation
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
+    
+    var manager : CLLocationManager?
+    var locations : CLLocationCoordinate2D?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.manager = CLLocationManager()
+        self.manager?.requestAlwaysAuthorization()
+        self.manager?.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            manager?.delegate = self
+            manager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            manager?.startUpdatingLocation()
+            
+            self.locations = self.manager?.location?.coordinate
+            let x = self.manager?.location?.coordinate
+        }
+        return true
+    }
+    
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+        return true
+    }
+    
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         return true
     }
 
