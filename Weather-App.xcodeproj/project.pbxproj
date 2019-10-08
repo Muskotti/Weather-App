@@ -13,7 +13,6 @@
 		01401059234CBDCB00702E25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01401058234CBDCB00702E25 /* Assets.xcassets */; };
 		0140105C234CBDCB00702E25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0140105A234CBDCB00702E25 /* LaunchScreen.storyboard */; };
 		01401066234CCC2E00702E25 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 01401065234CCC2E00702E25 /* blue.png */; };
-		01401069234CCD8000702E25 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01401068234CCD8000702E25 /* CurrentViewController.swift */; };
 		0140106E234CCE4D00702E25 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140106D234CCE4D00702E25 /* ForecastViewController.swift */; };
 		01401070234CCE6100702E25 /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0140106F234CCE6100702E25 /* CitiesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -27,7 +26,6 @@
 		0140105B234CBDCB00702E25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0140105D234CBDCB00702E25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01401065234CCC2E00702E25 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue.png; path = ../../../Downloads/blue.png; sourceTree = "<group>"; };
-		01401068234CCD8000702E25 /* CurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
 		0140106D234CCE4D00702E25 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		0140106F234CCE6100702E25 /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,7 +62,6 @@
 			children = (
 				0140106C234CCE3600702E25 /* Cities */,
 				0140106B234CCE2600702E25 /* Forecast */,
-				01401067234CCD6200702E25 /* CurrentView */,
 				01401051234CBDCA00702E25 /* AppDelegate.swift */,
 				01401053234CBDCA00702E25 /* ViewController.swift */,
 				01401055234CBDCA00702E25 /* Main.storyboard */,
@@ -74,14 +71,6 @@
 				0140105D234CBDCB00702E25 /* Info.plist */,
 			);
 			path = "Weather-App";
-			sourceTree = "<group>";
-		};
-		01401067234CCD6200702E25 /* CurrentView */ = {
-			isa = PBXGroup;
-			children = (
-				01401068234CCD8000702E25 /* CurrentViewController.swift */,
-			);
-			path = CurrentView;
 			sourceTree = "<group>";
 		};
 		0140106B234CCE2600702E25 /* Forecast */ = {
@@ -175,7 +164,6 @@
 				01401054234CBDCA00702E25 /* ViewController.swift in Sources */,
 				01401070234CCE6100702E25 /* CitiesViewController.swift in Sources */,
 				0140106E234CCE4D00702E25 /* ForecastViewController.swift in Sources */,
-				01401069234CCD8000702E25 /* CurrentViewController.swift in Sources */,
 				01401052234CBDCA00702E25 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,8 @@ import UIKit
 
 class CurrentViewController: UIViewController {
     
+    let test: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Current")

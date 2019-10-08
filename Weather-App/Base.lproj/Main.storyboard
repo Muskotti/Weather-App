@@ -46,7 +46,7 @@
         <!--Current-->
         <scene sceneID="nXa-Tz-ji2">
             <objects>
-                <viewController restorationIdentifier="CurrentID" id="G9U-jM-toz" customClass="CurrentViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="CurrentID" id="G9U-jM-toz" customClass="ViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="78j-Eb-Qih">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,6 +80,12 @@
                         <viewLayoutGuide key="safeArea" id="7gf-Ix-dxH"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Current" id="wZn-jS-8Y0"/>
+                    <connections>
+                        <outlet property="LocationLabel" destination="Ogd-7e-0T4" id="QHi-yL-Pai"/>
+                        <outlet property="WeatherImage" destination="bfc-1z-U2y" id="hEb-ee-7un"/>
+                        <outlet property="WeatherLabel" destination="WwV-JB-zGc" id="uK7-7U-Eyd"/>
+                        <outlet property="view" destination="78j-Eb-Qih" id="50y-So-Ovl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4G-je-19G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

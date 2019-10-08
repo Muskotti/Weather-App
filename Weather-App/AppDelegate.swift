@@ -15,12 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     var window: UIWindow?
     
+    var current: ViewController?
+    
     var manager : CLLocationManager?
     var locations : CLLocationCoordinate2D?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let navi = window?.rootViewController as! UITabBarController
+        current = navi.viewControllers![0] as? ViewController
         
         self.manager = CLLocationManager()
         self.manager?.requestAlwaysAuthorization()
@@ -33,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
             self.locations = self.manager?.location?.coordinate
             let x = self.manager?.location?.coordinate
+            current?.setLocation(loc: x!)
         }
         return true
     }
