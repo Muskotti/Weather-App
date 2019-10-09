@@ -10,6 +10,10 @@ import Foundation
 
 class WeatherClass {
     
+    var currentTemp : String?
+    
+    init () {}
+    
     func fetchUrl(url : String) {
         let config = URLSessionConfiguration.default
         
@@ -25,11 +29,14 @@ class WeatherClass {
     }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
-        let resstr = String(data: data!, encoding: String.Encoding.utf8)
-        
-        // Execute stuff in UI thread
         DispatchQueue.main.async(execute: {() in
-            print(resstr!)
+            do {
+                let asd = try JSONDecoder().decode(WeatherObject.self, from: data!)
+                print(asd.main.temp)
+                self.currentTemp = "\(asd.main.temp) C"
+            } catch {
+                print("rikki")
+            }
         })
     }
 }

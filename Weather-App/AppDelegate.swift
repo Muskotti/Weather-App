@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var current: ViewController?
     
-    var weather = WeatherClass()
-    
     var manager : CLLocationManager?
     var locations : CLLocationCoordinate2D?
 
@@ -40,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
             self.locations = self.manager?.location?.coordinate
             let x = self.manager?.location?.coordinate
-            current?.setLocation(loc: x!, weather: weather)
+            current?.setLocation(loc: x!)
         }
         return true
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForecastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ForecastViewController: UITableViewController {
     
     var stuff = ["asd","esd"]
     
@@ -16,9 +16,6 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableview.dataSource = self
-        self.tableview.delegate = self
-        print("Forecast")
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,20 +23,17 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(stuff[indexPath.row])")
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.stuff.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "ForecastTableID")
-        if(cell == nil){
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "ForecastTableID")
-        }
-        cell!.textLabel?.text = self.stuff[indexPath.row]
-        return cell!
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastTableID", for: indexPath)
+        cell.textLabel?.text = self.stuff[indexPath.row]
+        return cell
     }
 }

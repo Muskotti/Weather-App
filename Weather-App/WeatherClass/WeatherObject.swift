@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+struct WeatherObject : Codable {
+    var name : String
+    var weather : [Weather]
+    var main : Main
+}
+
+struct Weather: Codable {
+    var description : String
+    var icon : String
+}
+
+struct Main: Codable {
+    var temp : Double
+}
+
