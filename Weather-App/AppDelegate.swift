@@ -16,9 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var window: UIWindow?
     
     var current: ViewController?
+    var forecast: ForecastViewController?
     
     var manager : CLLocationManager?
     var locations : CLLocationCoordinate2D?
+    
+    var geoCoder = CLGeocoder()
+    var location : CLLocation?
+    
+    var placeP: CLPlacemark?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -26,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let navi = window?.rootViewController as! UITabBarController
         current = navi.viewControllers![0] as? ViewController
+        forecast = navi.viewControllers![2] as? ForecastViewController
         
         self.manager = CLLocationManager()
         self.manager?.requestAlwaysAuthorization()
@@ -37,8 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             manager?.startUpdatingLocation()
             
             self.locations = self.manager?.location?.coordinate
-            let x = self.manager?.location?.coordinate
-            current?.setLocation(loc: x!)
+            self.location = CLLocation(latitude: (self.locations?.latitude)!, longitude: (self.locations?.longitude)!)
+            geoCoder.reverseGeocodeLocation(location!, completionHandler: {(placemarks, error) -> Void in
+                var place: CLPlacemark!
+                place = placemarks?[0]
+                self.placeP = placemarks?[0]
+                self.current?.setLocation(loc: self.locations!, place: place)
+                self.forecast?.setTable(loc: self.locations!)
+            })
         }
         return true
     }
