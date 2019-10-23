@@ -47,8 +47,8 @@ class WeatherFetch {
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
         DispatchQueue.main.async(execute: {() in
             do {
-                //let asd = try JSONDecoder().decode(WeatherObject.self, from: data!)
                 if(self.viewC != nil) {
+                    self.viewC?.setSearch(true)
                     let asd = try JSONDecoder().decode(WeatherObject.self, from: data!)
                     self.viewC?.changeText(current: asd.main.temp)
                     let url = URL(string: "https://openweathermap.org/img/wn/\(asd.weather[0].icon)@2x.png")!
@@ -58,6 +58,7 @@ class WeatherFetch {
                     self.viewF?.setText(asd.list)
                     for qwe in asd.list {
                         let url = URL(string: "https://openweathermap.org/img/wn/\(qwe.weather[0].icon)@2x.png")!
+                        self.viewF?.images = []
                         self.downloadImage(from: url)
                     }
                 }
@@ -73,6 +74,7 @@ class WeatherFetch {
             DispatchQueue.main.async() {
                 if(self.viewC != nil){
                     self.viewC?.changeImage(img: data)
+                    self.viewC?.setSearch(false)
                 } else if (self.viewF != nil) {
                     self.viewF?.setImages(img: data)
                 }

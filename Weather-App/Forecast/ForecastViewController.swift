@@ -12,7 +12,6 @@ import CoreLocation
 class ForecastViewController: UITableViewController {
     
     @IBOutlet var tableview: UITableView!
-    @IBOutlet weak var Image: UIImageView!
     
     var stuff = [String]()
     var weather : WeatherFetch?
@@ -48,7 +47,18 @@ class ForecastViewController: UITableViewController {
         self.weather = WeatherFetch(url: "https://api.openweathermap.org/data/2.5/forecast?lat=\(loc.latitude)&lon=\(loc.longitude)&APPID=63dba0881a9c7a2ab8dd3666fe61c42c&units=metric", classView: self)
     }
     
+    func setTableCiti(citi: String) {
+        if(citi != "Use GPS"){
+            self.weather = WeatherFetch(url: "https://api.openweathermap.org/data/2.5/forecast?q=\(citi)&APPID=63dba0881a9c7a2ab8dd3666fe61c42c&units=metric", classView: self)
+            if(self.tableview != nil) {
+                self.tableview.reloadData()
+            }
+        }
+    }
+    
     func setText(_ text : [List]) {
+        stuff = []
+        subText = []
         for asd in text {
             stuff.append(asd.weather[0].description + " \(asd.main.temp) C")
             subText.append(asd.dt_txt)

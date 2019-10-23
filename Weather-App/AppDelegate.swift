@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var current: ViewController?
     var forecast: ForecastViewController?
+    var cities: CitiesViewController?
     
     var manager : CLLocationManager?
     var locations : CLLocationCoordinate2D?
@@ -32,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let navi = window?.rootViewController as! UITabBarController
         current = navi.viewControllers![0] as? ViewController
-        forecast = navi.viewControllers![2] as? ForecastViewController
+        forecast = navi.viewControllers![1] as? ForecastViewController
+        cities = navi.viewControllers![2] as? CitiesViewController
         
         self.manager = CLLocationManager()
         self.manager?.requestAlwaysAuthorization()
@@ -51,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 self.placeP = placemarks?[0]
                 self.current?.setLocation(loc: self.locations!, place: place)
                 self.forecast?.setTable(loc: self.locations!)
+                self.cities?.giveClasses(cur: self.current!, fore: self.forecast!)
             })
         }
         return true
