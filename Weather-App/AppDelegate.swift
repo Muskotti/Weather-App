@@ -36,10 +36,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         forecast = navi.viewControllers![1] as? ForecastViewController
         cities = navi.viewControllers![2] as? CitiesViewController
         
+        forecast?.appdel = self
+        current?.appdel = self
+        
         self.manager = CLLocationManager()
         self.manager?.requestAlwaysAuthorization()
         self.manager?.requestWhenInUseAuthorization()
         
+        setLocation()
+        
+        return true
+    }
+    
+    func setLocation() {
         if CLLocationManager.locationServicesEnabled() {
             manager?.delegate = self
             manager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -56,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 self.cities?.giveClasses(cur: self.current!, fore: self.forecast!)
             })
         }
-        return true
     }
     
     func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {

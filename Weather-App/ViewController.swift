@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var location : CLLocation?
     
     var weather : WeatherFetch?
+    var appdel : AppDelegate?
     
     var activity : UIActivityIndicatorView?
     
@@ -43,6 +44,8 @@ class ViewController: UIViewController {
             self.LocationLabel.text = citi
             self.weather = WeatherFetch(url: "https://api.openweathermap.org/data/2.5/weather?q=\(citi)&APPID=63dba0881a9c7a2ab8dd3666fe61c42c&units=metric", classView: self)
             
+        } else {
+            self.appdel!.setLocation()
         }
     }
     

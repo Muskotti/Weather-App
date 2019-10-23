@@ -17,6 +17,7 @@ class ForecastViewController: UITableViewController {
     var weather : WeatherFetch?
     var images : [UIImage] = []
     var subText = [String]()
+    var appdel : AppDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,8 @@ class ForecastViewController: UITableViewController {
             if(self.tableview != nil) {
                 self.tableview.reloadData()
             }
+        } else {
+            self.appdel!.setLocation()
         }
     }
     
